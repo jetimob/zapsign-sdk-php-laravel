@@ -5,10 +5,10 @@ namespace Jetimob\Zapsign\Entity;
 class Document extends BaseDocument
 {
     /** @var bool|null $sandbox Defina como true caso se trate de um documento de teste */
-    public ?bool $sandbox;
+    protected ?bool $sandbox;
 
-    /** @var Signer[] $signers Representa os signatários do documento */
-    public array $signers;
+    /** @var Signer[]|null $signers Representa os signatários do documento */
+    protected ?array $signers;
 
     /**
      * @return bool|null
@@ -29,18 +29,18 @@ class Document extends BaseDocument
     }
 
     /**
-     * @return Signer[]
+     * @return Signer[]|null
      */
-    public function getSigners(): array
+    public function getSigners(): ?array
     {
         return $this->signers;
     }
 
     /**
-     * @param Signer[] $signers Representa os signatários do documento
+     * @param Signer[]|null $signers Representa os signatários do documento
      * @return Document
      */
-    public function setSigners(array $signers): Document
+    public function setSigners(?array $signers): Document
     {
         $this->signers = $signers;
         return $this;
