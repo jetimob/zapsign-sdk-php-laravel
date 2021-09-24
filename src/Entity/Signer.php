@@ -8,8 +8,8 @@ class Signer
 {
     use Serializable;
 
-    /** @var string|null $redirectLink Link para redirecionamento após signatário assinar. */
-    protected ?string $redirectLink;
+    /** @var string|null $redirect_link Link para redirecionamento após signatário assinar. */
+    protected ?string $redirect_link;
 
     /** @var string|null $name Nome completo do signatário */
     protected ?string $name;
@@ -17,48 +17,56 @@ class Signer
     /** @var string|null $email E-mail do signatário */
     protected ?string $email;
 
-    /** @var string|null $phoneCountry Código do país do telefone do signatário (Ex: Brasil é 55) */
-    protected ?string $phoneCountry;
+    /** @var string|null $phone_country Código do país do telefone do signatário (Ex: Brasil é 55) */
+    protected ?string $phone_country;
 
-    /** @var string|null $phoneNumber Telefone (com DDD) do signatário (Ex: 11989118800) */
-    protected ?string $phoneNumber;
+    /** @var string|null $phone_number Telefone (com DDD) do signatário (Ex: 11989118800) */
+    protected ?string $phone_number;
 
     /**
-     * @var string|null $authMode Você pode escolher o método de autenticação do signatário.
+     * @var string|null $auth_mode Você pode escolher o método de autenticação do signatário.
      * Enum: "assinaturaTela", "tokenEmail", "assinaturaTela-tokenEmail", "tokenSms", "assinaturaTela-tokenSms", "certificadoDigital"
      */
-    protected ?string $authMode;
+    protected ?string $auth_mode;
 
-    /** @var bool|null $lockName Bloquear alteração do nome pelo signatário. */
-    protected ?bool $lockName;
+    /** @var bool|null $lock_name Bloquear alteração do nome pelo signatário. */
+    protected ?bool $lock_name;
 
-    /** @var bool|null $lockEmail Bloquear alteração do e-mail pelo signatário. */
-    protected ?bool $lockEmail;
+    /** @var bool|null $lock_email Bloquear alteração do e-mail pelo signatário. */
+    protected ?bool $lock_email;
 
-    /** @var bool|null $lockPhone Bloquear alteração do telefone pelo signatário. */
-    protected ?bool $lockPhone;
+    /** @var bool|null $lock_phone Bloquear alteração do telefone pelo signatário. */
+    protected ?bool $lock_phone;
 
     /** @var string|null $qualification Qualificação para aparecer no relatório de assinaturas. Ex: valor "testemunha" irá resultar em "Assinou como testemunha" */
     protected ?string $qualification;
 
-    /** @var string|null $externalId ID externo do signatário na sua aplicação. */
-    protected ?string $externalId;
+    /** @var string|null $external_id ID externo do signatário na sua aplicação. */
+    protected ?string $external_id;
+
+    protected ?string $status;
+    protected ?int $times_viewed;
+    protected ?string $last_view_at;
+    protected ?string $signed_at;
+    protected ?string $get_latitude;
+    protected ?string $geo_longitude;
+    protected ?string $token;
 
     /**
      * @return string|null
      */
     public function getRedirectLink(): ?string
     {
-        return $this->redirectLink;
+        return $this->redirect_link;
     }
 
     /**
-     * @param string|null $redirectLink Link para redirecionamento após signatário assinar.
+     * @param string|null $redirect_link Link para redirecionamento após signatário assinar.
      * @return Signer
      */
-    public function setRedirectLink(?string $redirectLink): Signer
+    public function setRedirectLink(?string $redirect_link): Signer
     {
-        $this->redirectLink = $redirectLink;
+        $this->redirect_link = $redirect_link;
         return $this;
     }
 
@@ -103,16 +111,16 @@ class Signer
      */
     public function getPhoneCountry(): ?string
     {
-        return $this->phoneCountry;
+        return $this->phone_country;
     }
 
     /**
-     * @param string|null $phoneCountry Código do país do telefone do signatário (Ex: Brasil é 55)
+     * @param string|null $phone_country Código do país do telefone do signatário (Ex: Brasil é 55)
      * @return Signer
      */
-    public function setPhoneCountry(?string $phoneCountry): Signer
+    public function setPhoneCountry(?string $phone_country): Signer
     {
-        $this->phoneCountry = $phoneCountry;
+        $this->phone_country = $phone_country;
         return $this;
     }
 
@@ -121,16 +129,16 @@ class Signer
      */
     public function getPhoneNumber(): ?string
     {
-        return $this->phoneNumber;
+        return $this->phone_number;
     }
 
     /**
-     * @param string|null $phoneNumber Telefone (com DDD) do signatário (Ex: 11989118800)
+     * @param string|null $phone_number Telefone (com DDD) do signatário (Ex: 11989118800)
      * @return Signer
      */
-    public function setPhoneNumber(?string $phoneNumber): Signer
+    public function setPhoneNumber(?string $phone_number): Signer
     {
-        $this->phoneNumber = $phoneNumber;
+        $this->phone_number = $phone_number;
         return $this;
     }
 
@@ -139,17 +147,17 @@ class Signer
      */
     public function getAuthMode(): ?string
     {
-        return $this->authMode;
+        return $this->auth_mode;
     }
 
     /**
-     * @param string|null $authMode Você pode escolher o método de autenticação do signatário.
+     * @param string|null $auth_mode Você pode escolher o método de autenticação do signatário.
      * Enum: "assinaturaTela", "tokenEmail", "assinaturaTela-tokenEmail", "tokenSms", "assinaturaTela-tokenSms", "certificadoDigital"
      * @return Signer
      */
-    public function setAuthMode(?string $authMode): Signer
+    public function setAuthMode(?string $auth_mode): Signer
     {
-        $this->authMode = $authMode;
+        $this->auth_mode = $auth_mode;
         return $this;
     }
 
@@ -158,16 +166,16 @@ class Signer
      */
     public function getLockName(): ?bool
     {
-        return $this->lockName;
+        return $this->lock_name;
     }
 
     /**
-     * @param bool|null $lockName Bloquear alteração do nome pelo signatário.
+     * @param bool|null $lock_name Bloquear alteração do nome pelo signatário.
      * @return Signer
      */
-    public function setLockName(?bool $lockName): Signer
+    public function setLockName(?bool $lock_name): Signer
     {
-        $this->lockName = $lockName;
+        $this->lock_name = $lock_name;
         return $this;
     }
 
@@ -176,16 +184,16 @@ class Signer
      */
     public function getLockEmail(): ?bool
     {
-        return $this->lockEmail;
+        return $this->lock_email;
     }
 
     /**
-     * @param bool|null $lockEmail Bloquear alteração do e-mail pelo signatário.
+     * @param bool|null $lock_email Bloquear alteração do e-mail pelo signatário.
      * @return Signer
      */
-    public function setLockEmail(?bool $lockEmail): Signer
+    public function setLockEmail(?bool $lock_email): Signer
     {
-        $this->lockEmail = $lockEmail;
+        $this->lock_email = $lock_email;
         return $this;
     }
 
@@ -194,16 +202,16 @@ class Signer
      */
     public function getLockPhone(): ?bool
     {
-        return $this->lockPhone;
+        return $this->lock_phone;
     }
 
     /**
-     * @param bool|null $lockPhone Bloquear alteração do telefone pelo signatário.
+     * @param bool|null $lock_phone Bloquear alteração do telefone pelo signatário.
      * @return Signer
      */
-    public function setLockPhone(?bool $lockPhone): Signer
+    public function setLockPhone(?bool $lock_phone): Signer
     {
-        $this->lockPhone = $lockPhone;
+        $this->lock_phone = $lock_phone;
         return $this;
     }
 
@@ -230,19 +238,72 @@ class Signer
      */
     public function getExternalId(): ?string
     {
-        return $this->externalId;
+        return $this->external_id;
     }
 
     /**
-     * @param string|null $externalId ID externo do signatário na sua aplicação.
+     * @param string|null $external_id ID externo do signatário na sua aplicação.
      * @return Signer
      */
-    public function setExternalId(?string $externalId): Signer
+    public function setExternalId(?string $external_id): Signer
     {
-        $this->externalId = $externalId;
+        $this->external_id = $external_id;
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
 
+    /**
+     * @return int|null
+     */
+    public function getTimesViewed(): ?int
+    {
+        return $this->times_viewed;
+    }
 
+    /**
+     * @return string|null
+     */
+    public function getLastViewAt(): ?string
+    {
+        return $this->last_view_at;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSignedAt(): ?string
+    {
+        return $this->signed_at;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGetLatitude(): ?string
+    {
+        return $this->get_latitude;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getGeoLongitude(): ?string
+    {
+        return $this->geo_longitude;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
 }
