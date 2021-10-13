@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\Juno\Api;
+namespace Jetimob\Zapsign\Api;
 
 use Jetimob\Http\Authorization\OAuth\OAuthFlow;
 use Jetimob\Http\Request;

@@ -10,62 +10,33 @@ declare(strict_types=1);
  | @link https://dev.juno.com.br/api/v2#tag/Componentes
  |
  */
-$endpoints = [
-    'sandbox' => [
-        'base_uri' => 'https://sandbox.boletobancario.com/api-integration/',
-        'oauth_token_uri' => 'https://sandbox.boletobancario.com/authorization-server/oauth/token',
-    ],
-    'production' => [
-        'base_uri' => 'https://api.juno.com.br/',
-        'oauth_token_uri' => 'https://api.juno.com.br/authorization-server/oauth/token',
-    ],
-];
 
 return [
+
     /*
     |--------------------------------------------------------------------------
-    | X-Resource-Token
+    | Zapsign Sandbox
     |--------------------------------------------------------------------------
     |
-    | Muitos dos recursos também necessitam de um token de recurso, X-Resource-Token que identifica a conta digital
-    | que deverá ser utilizada durante a execução de uma operação. Cada conta digital tem o seu próprio token de
-    | recurso.
-    | Contas digitais criadas via API incluem o token de recurso na resposta da requisição. Para obter o token de
-    | recurso de uma conta digital já existente ou para redefinir o token de recurso, o cliente precisa acessar o
-    | painel do cliente Juno e realizar esta operação na aba Integração, opção Token Privado.
+    | Deve ser informado se o SDK será executado em modo de Sandbox (true|false)
     |
-    | O `resource_token` é utilizado como valor padrão para o header 'X-Resource-Token' que identifica uma conta
-    | dentro da API da Juno e pode ser sobrescrito programaticamente da seguinte forma:
     |
-    | Juno::{$endpoint}()->using('X-Resource-Token')->find();
+    |
     */
-
-    'resource_token' => env('JUNO_RESOURCE_TOKEN'),
+    'sandbox' => env('ZAPSIGN_SANDBOX', true),
 
     'http' => [
-        /*
-        |--------------------------------------------------------------------------
-        | Client ID
-        |--------------------------------------------------------------------------
-        |
-        | Deve ser gerado dentro da aplicação da Juno.
-        | @link https://dev.juno.com.br/api/v2#operation/getAccessToken
-        |
-        */
-
-        'oauth_client_id' => env('JUNO_CLIENT_ID'),
-
         /*
         |--------------------------------------------------------------------------
         | Client Secret
         |--------------------------------------------------------------------------
         |
-        | Deve ser gerado dentro da aplicação da Juno.
+        | Deve ser gerado dentro do painel da Zapsign
         | @link https://dev.juno.com.br/api/v2#operation/getAccessToken
         |
         */
 
-        'oauth_client_secret' => env('JUNO_CLIENT_SECRET'),
+        'api_key' => env('ZAPSIGN_API_KEY'),
 
         /*
         |--------------------------------------------------------------------------
@@ -111,14 +82,12 @@ return [
         */
 
         'guzzle' => [
-            'base_uri' => $endpoints[env('JUNO_ENVIRONMENT', 'sandbox')]['base_uri'],
-
             /*
             |--------------------------------------------------------------------------
             | Connect Timeout
             |--------------------------------------------------------------------------
             |
-            | Quantos segundos esperar por uma conexão com o servidor da Juno. 0 significa sem limite de espera.
+            | Quantos segundos esperar por uma conexão com o servidor. "0" significa sem limite de espera.
             | https://docs.guzzlephp.org/en/stable/request-options.html#connect-timeout
             |
             */
@@ -130,7 +99,7 @@ return [
             | Timeout
             |--------------------------------------------------------------------------
             |
-            | Quantos segundos esperar pela resposta do servidor. 0 significa sem limite de espera.
+            | Quantos segundos esperar pela resposta do servidor. "0" significa sem limite de espera.
             | @link https://docs.guzzlephp.org/en/stable/request-options.html#timeout
             |
             */
@@ -161,66 +130,8 @@ return [
             'middlewares' => [
                 \Jetimob\Http\Middlewares\OAuthRequestMiddleware::class,
             ],
-
-            /*
-            |--------------------------------------------------------------------------
-            | Headers
-            |--------------------------------------------------------------------------
-            |
-            | Headers de requisição.
-            | @link https://docs.guzzlephp.org/en/stable/request-options.html#headers
-            |
-            */
-
-            'headers' => [
-                // Versão da API da Juno
-                'X-Api-Version' => 2,
-            ],
         ],
 
-        /*
-        |--------------------------------------------------------------------------
-        | OAuth Access Token Repository
-        |--------------------------------------------------------------------------
-        |
-        | Essa classe é responsável por gerenciar os AccessTokens. Por padrão ela utiliza o repositório de cache padrão.
-        |
-        | PRECISA implementar \Jetimob\Http\Authorization\OAuth\Storage\CacheRepositoryContract
-        */
-
-        'oauth_access_token_repository' => \Jetimob\Http\Authorization\OAuth\Storage\CacheRepository::class,
-
-        /*
-        |--------------------------------------------------------------------------
-        | OAuth Token Cache Key Resolver
-        |--------------------------------------------------------------------------
-        |
-        | Classe responsável por gerar uma chave de identificação única para o cliente OAuth.
-        |
-        | PRECISA implementar \Jetimob\Http\Authorization\OAuth\Storage\AccessTokenCacheKeyResolverInterface
-        */
-
-        'oauth_token_cache_key_resolver' =>
-            \Jetimob\Http\Authorization\OAuth\Storage\AccessTokenCacheKeyResolver::class,
-
-        /*
-        |--------------------------------------------------------------------------
-        | OAuth Client Resolver
-        |--------------------------------------------------------------------------
-        |
-        | Classe responsável por resolver o client OAuth.
-        |
-        | PRECISA implementar \Jetimob\Http\Authorization\OAuth\ClientProviders\OAuthClientResolverInterface
-        */
-
-        'oauth_client_resolver' => \Jetimob\Http\Authorization\OAuth\ClientProviders\OAuthClientResolver::class,
-
-        'oauth_access_token_resolver' => [
-            \Jetimob\Http\Authorization\OAuth\OAuthFlow::CLIENT_CREDENTIALS =>
-                \Jetimob\Juno\Http\OAuthClientCredentialsTokenResolver::class,
-        ],
-
-        'oauth_token_uri' => $endpoints[env('JUNO_ENVIRONMENT', 'sandbox')]['oauth_token_uri'],
     ],
 
     /*

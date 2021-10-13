@@ -1,11 +1,11 @@
 <?php
 
-namespace Jetimob\Juno\Api;
+namespace Jetimob\Zapsign\Api;
 
 use Jetimob\Http\Request;
-use Jetimob\Juno\Exception\InvalidArgumentException;
-use Jetimob\Juno\Exception\ZapsignRequestException;
-use Jetimob\Juno\Juno;
+use Jetimob\Zapsign\Exception\InvalidArgumentException;
+use Jetimob\Zapsign\Exception\ZapsignRequestException;
+use Jetimob\Zapsign\Zapsign;
 
 abstract class AbstractApi extends \Jetimob\Http\AbstractApi
 {
@@ -14,12 +14,12 @@ abstract class AbstractApi extends \Jetimob\Http\AbstractApi
 
     /**
      * AbstractApi constructor.
-     * @param Juno $juno
+     * @param Zapsign $zapsign
      */
-    public function __construct(Juno $juno)
+    public function __construct(Zapsign $zapsign)
     {
-        parent::__construct($juno);
-        $this->resourceToken = config('juno.resource_token', '');
+        parent::__construct($zapsign);
+        $this->resourceToken = config('zapsign.api_key', '');
     }
 
     /**

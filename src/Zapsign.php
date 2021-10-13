@@ -28,12 +28,22 @@ use Jetimob\Zapsign\Exception\RuntimeException;
  */
 class Zapsign implements HttpProviderContract
 {
+    public const VERSION = 1.0;
+    /**
+     * O versionamento da API é realizado diretamente no endpoint, portanto caso uma versão nova seja lançada deve-se mudar a baseUri
+     * @link https://docs.zapsign.com.br/versionamento-da-api-
+     */
+    protected string $baseUri = 'https://api.zapsign.com.br/api/v1/docs/';
     protected Http $client;
     protected array $config;
 
     public function __construct(array $config = [])
     {
-        $this->client = new Http($config['http'] ?? []);
+        $http = array_merge($config['http'] ?? [], [
+            'base_uri' => $this->baseUri,
+        ]);
+
+        $this->client = new Http($http);
         $this->config = $config;
     }
 
