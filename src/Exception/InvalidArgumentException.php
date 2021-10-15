@@ -1,7 +1,7 @@
 <?php
 
-namespace Jetimob\Zapsign\Exception;
+namespace Jetimob\ZapSign\Exception;
 
-class InvalidArgumentException extends \InvalidArgumentException implements ZapsignException
+class InvalidArgumentException extends \InvalidArgumentException implements ZapSignException
 {
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\Zapsign\Entity;
+namespace Jetimob\ZapSign\Entity;
 
 class Document extends BaseDocument
 {

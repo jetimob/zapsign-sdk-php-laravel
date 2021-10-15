@@ -1,7 +1,7 @@
 <?php
 
-namespace Jetimob\Zapsign\Exception;
+namespace Jetimob\ZapSign\Exception;
 
-class RuntimeException extends \RuntimeException implements ZapsignException
+class RuntimeException extends \RuntimeException implements ZapSignException
 {
 }

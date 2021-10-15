@@ -1,6 +1,8 @@
 <?php
 
-use Jetimob\Zapsign\Entity\Document;
+namespace Jetimob\ZapSign\Entity\Webhook;
+
+use Jetimob\ZapSign\Entity\Document;
 
 class DocumentDeleted extends Document
 {

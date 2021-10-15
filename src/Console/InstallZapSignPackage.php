@@ -1,12 +1,12 @@
 <?php
 
-namespace Jetimob\Zapsign\Console;
+namespace Jetimob\ZapSign\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Jetimob\Zapsign\ZapsignServiceProvider;
+use Jetimob\ZapSign\ZapSignServiceProvider;
 
-class InstallZapsignPackage extends Command
+class InstallZapSignPackage extends Command
 {
     protected $signature = 'zapsign:install';
 
@@ -30,7 +30,7 @@ class InstallZapsignPackage extends Command
     private function publish($force = false): void
     {
         $params = [
-            '--provider' => ZapsignServiceProvider::class,
+            '--provider' => ZapSignServiceProvider::class,
             '--tag'      => 'config'
         ];
 

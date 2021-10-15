@@ -1,11 +1,11 @@
 <?php
 
-namespace Jetimob\Juno\Tests\Unit;
+namespace Jetimob\ZapSign\Tests\Unit;
 
 use Illuminate\Support\Facades\File;
-use Jetimob\Juno\Tests\AbstractTestCase;
+use Jetimob\ZapSign\Tests\AbstractTestCase;
 
-class InstallJunoPackageTest extends AbstractTestCase
+class InstallZapSignPackageTest extends AbstractTestCase
 {
     protected string $configPath;
 

@@ -1,7 +1,7 @@
 {
     "name": "jetimob/zapsign-sdk-php-laravel",
     "keywords": ["laravel", "zapsign", "signature", "sdk", "digital-signature", "assinatura digital", "assinatura eletronica"],
-    "description": "SDK de integração com a Zapsign",
+    "description": "SDK de integração com a ZapSign",
     "type": "library",
     "require": {
         "php": "^7.4 || ^8.0",
@@ -14,21 +14,21 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Jetimob\\Zapsign\\": "src/"
+            "Jetimob\\ZapSign\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Jetimob\\Zapsign\\Tests\\": "tests/"
+            "Jetimob\\ZapSign\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "ZapsignServiceProvider"
+                "ZapSignServiceProvider"
             ],
             "aliases": {
-                "Zapsign": "Jetimob\\Zapsign\\Facades\\Zapsign"
+                "ZapSign": "Jetimob\\ZapSign\\Facades\\ZapSign"
             }
         }
     },

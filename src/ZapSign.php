@@ -1,39 +1,19 @@
 <?php
 
-namespace Jetimob\Zapsign;
+namespace Jetimob\ZapSign;
 
 use Jetimob\Http\Contracts\HttpProviderContract;
 use Jetimob\Http\Http;
-use Jetimob\Zapsign\Api\Account\AccountApi;
-use Jetimob\Zapsign\Api\AdditionalData\AdditionalDataApi;
-use Jetimob\Zapsign\Api\Balance\BalanceApi;
-use Jetimob\Zapsign\Api\Charge\ChargeApi;
-use Jetimob\Zapsign\Api\Credentials\CredentialsApi;
-use Jetimob\Zapsign\Api\Document\DocumentApi;
-use Jetimob\Zapsign\Api\Pix\PixApi;
-use Jetimob\Zapsign\Api\Transference\TransferenceApi;
-use Jetimob\Zapsign\Api\Webhook\WebhookApi;
-use Jetimob\Zapsign\Exception\RuntimeException;
+use Jetimob\ZapSign\Exception\RuntimeException;
 
-/**
- * @method AccountApi account()
- * @method AdditionalDataApi additionalData()
- * @method BalanceApi balance()
- * @method ChargeApi charge()
- * @method CredentialsApi credentials()
- * @method DocumentApi documents()
- * @method PixApi pix()
- * @method TransferenceApi transference()
- * @method WebhookApi webhook()
- */
-class Zapsign implements HttpProviderContract
+class ZapSign implements HttpProviderContract
 {
     public const VERSION = 1.0;
     /**
      * O versionamento da API é realizado diretamente no endpoint, portanto caso uma versão nova seja lançada deve-se mudar a baseUri
-     * @link https://docs.zapsign.com.br/versionamento-da-api-
+     * @link https://docs.zapsign.com.br/versionamento-da-api
      */
-    protected string $baseUri = 'https://api.zapsign.com.br/api/v1/docs/';
+    protected string $baseUri = 'https://api.zapsign.com.br/api/v1/';
     protected Http $client;
     protected array $config;
 

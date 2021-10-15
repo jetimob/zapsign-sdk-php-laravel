@@ -1,22 +1,22 @@
 <?php
 
-namespace Jetimob\Zapsign\Api;
+namespace Jetimob\ZapSign\Api;
 
 use Jetimob\Http\Request;
-use Jetimob\Zapsign\Exception\InvalidArgumentException;
-use Jetimob\Zapsign\Exception\ZapsignRequestException;
-use Jetimob\Zapsign\Zapsign;
+use Jetimob\ZapSign\Exception\InvalidArgumentException;
+use Jetimob\ZapSign\Exception\ZapSignRequestException;
+use Jetimob\ZapSign\ZapSign;
 
 abstract class AbstractApi extends \Jetimob\Http\AbstractApi
 {
     private string $resourceToken;
-    protected ?string $exceptionClass = ZapsignRequestException::class;
+//    protected ?string $exceptionClass = ZapSignRequestException::class;
 
     /**
      * AbstractApi constructor.
-     * @param Zapsign $zapsign
+     * @param ZapSign $zapsign
      */
-    public function __construct(Zapsign $zapsign)
+    public function __construct(ZapSign $zapsign)
     {
         parent::__construct($zapsign);
         $this->resourceToken = config('zapsign.api_key', '');
@@ -60,7 +60,6 @@ abstract class AbstractApi extends \Jetimob\Http\AbstractApi
 
     protected function makeBaseRequest($method, $path, array $headers = [], $body = null): Request
     {
-        return (new AuthorizedRequest($method, $path, $headers, $body))
-            ->withAddedHeader('X-Resource-Token', $this->resourceToken);
+        return new Request($method, $path, $headers, $body);
     }
 }

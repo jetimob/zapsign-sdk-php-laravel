@@ -1,9 +1,8 @@
 <?php
 
-namespace Jetimob\Juno\Tests;
+namespace Jetimob\ZapSign\Tests;
 
-use Illuminate\Support\Str;
-use Jetimob\Juno\ZapsignServiceProvider;
+use Jetimob\ZapSign\ZapSignServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 class AbstractTestCase extends TestCase
@@ -13,7 +12,7 @@ class AbstractTestCase extends TestCase
     {
         parent::setUp();
         $this->assertTrue(
-            Str::contains(config('juno.http.guzzle.base_uri'), 'sandbox'),
+            config('zapsign.sandbox'),
             'Os testes DEVEM ser executados apenas em ambiente sandbox!',
         );
     }
@@ -21,6 +20,6 @@ class AbstractTestCase extends TestCase
     /** @inheritDoc */
     protected function getPackageProviders($app)
     {
-        return [ZapsignServiceProvider::class];
+        return [ZapSignServiceProvider::class];
     }
 }

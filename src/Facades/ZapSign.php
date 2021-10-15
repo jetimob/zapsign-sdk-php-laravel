@@ -1,10 +1,10 @@
 <?php
 
-namespace Jetimob\Juno\Facades;
+namespace Jetimob\ZapSign\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Zapsign extends Facade
+class ZapSign extends Facade
 {
     /**
      * Get the registered name of the component.

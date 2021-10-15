@@ -11,7 +11,7 @@
         </include>
     </coverage>
     <testsuites>
-        <testsuite name="Laravel Juno SDK PHP Test Suite">
+        <testsuite name="Laravel ZapSign SDK PHP Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>

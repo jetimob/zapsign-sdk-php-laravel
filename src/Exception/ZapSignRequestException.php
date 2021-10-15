@@ -1,13 +1,13 @@
 <?php
 
-namespace Jetimob\Zapsign\Exception;
+namespace Jetimob\ZapSign\Exception;
 
 use GuzzleHttp\Exception\RequestException;
 use Jetimob\Http\Contracts\HydratableContract;
 use Jetimob\Http\Traits\Serializable;
-use Jetimob\Juno\Entity\ErrorDetail;
 
-class ZapsignRequestException extends RequestException implements ZapsignException, HydratableContract
+// Precisa ver se vai ter como padronizar os erros em entities
+class ZapSignRequestException extends RequestException implements ZapSignException, HydratableContract
 {
     use Serializable;
 
@@ -15,8 +15,6 @@ class ZapsignRequestException extends RequestException implements ZapsignExcepti
     protected ?int $status = null;
     protected ?string $error = null;
     protected ?string $path = null;
-
-    /** @var ErrorDetail[] $details */
     protected ?array $details = null;
 
     public function detailsItemType(): string

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Jetimob\Zapsign;
+namespace Jetimob\ZapSign;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\ServiceProvider;
-use Jetimob\Zapsign\Console\InstallZapsignPackage;
+use Jetimob\ZapSign\Console\InstallZapSignPackage;
 
-class ZapsignServiceProvider extends ServiceProvider
+class ZapSignServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
@@ -25,11 +25,11 @@ class ZapsignServiceProvider extends ServiceProvider
             ], 'config');
 
             $this->commands([
-                InstallZapsignPackage::class,
+                InstallZapSignPackage::class,
             ]);
         }
 
-        $this->mergeConfigFrom($src, 'juno');
+        $this->mergeConfigFrom($src, 'zapsign');
     }
 
     /**
@@ -39,11 +39,11 @@ class ZapsignServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('jetimob.juno', function (Container $app) {
-            return new Juno($app['config']['juno'] ?? []);
+        $this->app->singleton('jetimob.zapsign', function (Container $app) {
+            return new ZapSign($app['config']['zapsign'] ?? []);
         });
 
-        $this->app->alias('jetimob.juno', Juno::class);
+        $this->app->alias('jetimob.zapsign', ZapSign::class);
     }
 
     /**
@@ -54,7 +54,7 @@ class ZapsignServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'jetimob.juno',
+            'jetimob.zapsign',
         ];
     }
 }
