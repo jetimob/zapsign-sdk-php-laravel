@@ -4,6 +4,10 @@ namespace Jetimob\ZapSign\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @method static \Jetimob\ZapSign\Api\Document\DocumentApi document()
+ * @method static \Jetimob\ZapSign\Api\Signer\SignerApi signer()
+ */
 class ZapSign extends Facade
 {
     /**

@@ -2,7 +2,7 @@
 
 namespace Jetimob\ZapSign\Entity;
 
-use Jetimob\Http\Traits\Serializable;
+use Jetimob\ZapSign\Models\SignerAttributes;
 
 class Signer extends SignerAttributes
 {

@@ -2,8 +2,8 @@
 
 namespace Jetimob\ZapSign\Api\Signer;
 
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use Jetimob\Http\Response;
 use Jetimob\ZapSign\Api\AbstractApi;
 
 /**
@@ -18,7 +18,7 @@ class SignerApi extends AbstractApi
      */
     public function find(string $signerToken): SignerResponse
     {
-        return $this->mappedGet("signers/$signerToken", SignerResponse::class);
+        return $this->mappedGet("signers/{$signerToken}/", SignerResponse::class);
     }
 
     /**
@@ -29,7 +29,7 @@ class SignerApi extends AbstractApi
      */
     public function create(SignerDTO $signer, string $documentToken): SignerResponse
     {
-        return $this->mappedPost("docs/$documentToken/add-signer", SignerResponse::class, [
+        return $this->mappedPost("docs/{$documentToken}/add-signer/", SignerResponse::class, [
             RequestOptions::JSON => $signer,
         ]);
     }
@@ -42,7 +42,7 @@ class SignerApi extends AbstractApi
      */
     public function update(SignerDTO $signer, string $signerToken): SignerResponse
     {
-        return $this->mappedPost("signers/$signerToken", SignerResponse::class, [
+        return $this->mappedPost("signers/{$signerToken}/", SignerResponse::class, [
             RequestOptions::JSON => $signer,
         ]);
     }
@@ -54,6 +54,6 @@ class SignerApi extends AbstractApi
      */
     public function delete(string $signerToken): Response
     {
-        return $this->request('delete', "signer/$signerToken/remove");
+        return $this->request('delete', "signer/{$signerToken}/remove/");
     }
 }
