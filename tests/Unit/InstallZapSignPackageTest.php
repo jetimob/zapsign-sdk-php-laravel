@@ -19,7 +19,7 @@ class InstallZapSignPackageTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->configPath = config_path('juno.php');
+        $this->configPath = config_path('zapsign.php');
         $this->cleanUp();
     }
 
@@ -34,8 +34,8 @@ class InstallZapSignPackageTest extends AbstractTestCase
     {
         $this->assertFileDoesNotExist($this->configPath);
 
-        $this->artisan('juno:install')
-            ->expectsOutput('Arquivo de configuração copiado para ./config/juno.php')
+        $this->artisan('zapsign:install')
+            ->expectsOutput('Arquivo de configuração copiado para ./config/zapsign.php')
             ->assertExitCode(0);
 
         $this->assertFileExists($this->configPath);
@@ -45,11 +45,11 @@ class InstallZapSignPackageTest extends AbstractTestCase
     /** @test */
     public function existingFileCanBeOverwritten(): void
     {
-        $this->configPath = config_path('juno.php');
+        $this->configPath = config_path('zapsign.php');
         File::put($this->configPath, '');
         $this->assertFileExists($this->configPath);
 
-        $command = $this->artisan('juno:install');
+        $command = $this->artisan('zapsign:install');
         $command->expectsQuestion('O arquivo de configuração já existe, deseja sobrescrever?', 'no');
         $command->assertExitCode(0);
     }
@@ -57,11 +57,11 @@ class InstallZapSignPackageTest extends AbstractTestCase
     /** @test */
     public function existingFileShouldBeOverwritten(): void
     {
-        $this->configPath = config_path('juno.php');
+        $this->configPath = config_path('zapsign.php');
         File::put($this->configPath, '');
         $this->assertFileExists($this->configPath);
 
-        $command = $this->artisan('juno:install');
+        $command = $this->artisan('zapsign:install');
         $command->expectsQuestion('O arquivo de configuração já existe, deseja sobrescrever?', 'yes');
         $command->expectsOutput('Arquivo de configuração sobrescrito');
         $command->assertExitCode(0);
