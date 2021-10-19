@@ -2,8 +2,8 @@
 
 namespace Jetimob\ZapSign\Api\Document;
 
+use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\RequestOptions;
-use Jetimob\Http\Response;
 use Jetimob\ZapSign\Api\AbstractApi;
 
 /**
@@ -17,7 +17,7 @@ class DocumentApi extends AbstractApi
      */
     public function list(): DocumentListResponse
     {
-        return $this->mappedGet('docs', DocumentListResponse::class);
+        return $this->mappedGet('docs/', DocumentListResponse::class);
     }
 
     /**
@@ -27,7 +27,7 @@ class DocumentApi extends AbstractApi
      */
     public function find(string $documentToken): DocumentResponse
     {
-        return $this->mappedGet("docs/$documentToken", DocumentResponse::class);
+        return $this->mappedGet("docs/{$documentToken}/", DocumentResponse::class);
     }
 
     /**
@@ -37,7 +37,7 @@ class DocumentApi extends AbstractApi
      */
     public function create(DocumentDTO $document): DocumentResponse
     {
-        return $this->mappedPost('docs', DocumentResponse::class, [
+        return $this->mappedPost('docs/', DocumentResponse::class, [
             RequestOptions::JSON => $document,
         ]);
     }
@@ -50,7 +50,7 @@ class DocumentApi extends AbstractApi
      */
     public function attach(AttachmentDTO $attachment, string $documentToken): DocumentResponse
     {
-        return $this->mappedPost("docs/$documentToken/upload-extra-doc", DocumentResponse::class, [
+        return $this->mappedPost("docs/{$documentToken}/upload-extra-doc/", DocumentResponse::class, [
             RequestOptions::JSON => $attachment,
         ]);
     }
@@ -62,6 +62,6 @@ class DocumentApi extends AbstractApi
      */
     public function delete(string $documentToken): Response
     {
-        return $this->request('delete', "docs/$documentToken");
+        return $this->request('delete', "docs/{$documentToken}/");
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jetimob\ZapSign\Entity;
+namespace Jetimob\ZapSign\Models;
 
 use Jetimob\Http\Traits\Serializable;
 
@@ -62,9 +62,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $redirect_link Link para redirecionamento após signatário assinar.
-     * @return Signer
+     * @return self
      */
-    public function setRedirectLink(?string $redirect_link): Signer
+    public function setRedirectLink(?string $redirect_link): self
     {
         $this->redirect_link = $redirect_link;
         return $this;
@@ -80,9 +80,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $name Nome completo do signatário
-     * @return Signer
+     * @return self
      */
-    public function setName(?string $name): Signer
+    public function setName(?string $name): self
     {
         $this->name = $name;
         return $this;
@@ -98,9 +98,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $email E-mail do signatário
-     * @return Signer
+     * @return self
      */
-    public function setEmail(?string $email): Signer
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
         return $this;
@@ -116,9 +116,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $phone_country Código do país do telefone do signatário (Ex: Brasil é 55)
-     * @return Signer
+     * @return self
      */
-    public function setPhoneCountry(?string $phone_country): Signer
+    public function setPhoneCountry(?string $phone_country): self
     {
         $this->phone_country = $phone_country;
         return $this;
@@ -134,9 +134,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $phone_number Telefone (com DDD) do signatário (Ex: 11989118800)
-     * @return Signer
+     * @return self
      */
-    public function setPhoneNumber(?string $phone_number): Signer
+    public function setPhoneNumber(?string $phone_number): self
     {
         $this->phone_number = $phone_number;
         return $this;
@@ -153,9 +153,9 @@ abstract class SignerAttributes
     /**
      * @param string|null $auth_mode Você pode escolher o método de autenticação do signatário.
      * Enum: "assinaturaTela", "tokenEmail", "assinaturaTela-tokenEmail", "tokenSms", "assinaturaTela-tokenSms", "certificadoDigital"
-     * @return Signer
+     * @return self
      */
-    public function setAuthMode(?string $auth_mode): Signer
+    public function setAuthMode(?string $auth_mode): self
     {
         $this->auth_mode = $auth_mode;
         return $this;
@@ -171,9 +171,9 @@ abstract class SignerAttributes
 
     /**
      * @param bool|null $lock_name Bloquear alteração do nome pelo signatário.
-     * @return Signer
+     * @return self
      */
-    public function setLockName(?bool $lock_name): Signer
+    public function setLockName(?bool $lock_name): self
     {
         $this->lock_name = $lock_name;
         return $this;
@@ -189,9 +189,9 @@ abstract class SignerAttributes
 
     /**
      * @param bool|null $lock_email Bloquear alteração do e-mail pelo signatário.
-     * @return Signer
+     * @return self
      */
-    public function setLockEmail(?bool $lock_email): Signer
+    public function setLockEmail(?bool $lock_email): self
     {
         $this->lock_email = $lock_email;
         return $this;
@@ -207,9 +207,9 @@ abstract class SignerAttributes
 
     /**
      * @param bool|null $lock_phone Bloquear alteração do telefone pelo signatário.
-     * @return Signer
+     * @return self
      */
-    public function setLockPhone(?bool $lock_phone): Signer
+    public function setLockPhone(?bool $lock_phone): self
     {
         $this->lock_phone = $lock_phone;
         return $this;
@@ -225,9 +225,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $qualification Qualificação para aparecer no relatório de assinaturas. Ex: valor "testemunha" irá resultar em "Assinou como testemunha"
-     * @return Signer
+     * @return self
      */
-    public function setQualification(?string $qualification): Signer
+    public function setQualification(?string $qualification): self
     {
         $this->qualification = $qualification;
         return $this;
@@ -243,9 +243,9 @@ abstract class SignerAttributes
 
     /**
      * @param string|null $external_id ID externo do signatário na sua aplicação.
-     * @return Signer
+     * @return self
      */
-    public function setExternalId(?string $external_id): Signer
+    public function setExternalId(?string $external_id): self
     {
         $this->external_id = $external_id;
         return $this;

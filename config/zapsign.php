@@ -68,6 +68,7 @@ return [
     */
 
     'api_impl' => [
-
+        'document' => \Jetimob\ZapSign\Api\Document\DocumentApi::class,
+        'signer' => \Jetimob\ZapSign\Api\Signer\SignerApi::class,
     ],
 ];

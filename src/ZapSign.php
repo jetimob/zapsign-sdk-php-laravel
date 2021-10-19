@@ -6,6 +6,10 @@ use Jetimob\Http\Contracts\HttpProviderContract;
 use Jetimob\Http\Http;
 use Jetimob\ZapSign\Exception\RuntimeException;
 
+/**
+ * @method \Jetimob\ZapSign\Api\Document\DocumentApi document()
+ * @method \Jetimob\ZapSign\Api\Signer\SignerApi signer()
+ */
 class ZapSign implements HttpProviderContract
 {
     public const VERSION = 1.0;
@@ -19,9 +23,9 @@ class ZapSign implements HttpProviderContract
 
     public function __construct(array $config = [])
     {
-        $http = array_merge($config['http'] ?? [], [
-            'base_uri' => $this->baseUri,
-        ]);
+        $http = $config['http'] ?? [];
+        $http['guzzle'] = $http['guzzle'] ?? [];
+        $http['guzzle']['base_uri'] = $this->baseUri;
 
         $this->client = new Http($http);
         $this->config = $config;
