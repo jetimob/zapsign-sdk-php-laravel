@@ -16,7 +16,6 @@
         </testsuite>
     </testsuites>
     <php>
-        <env name="DB_CONNECTION" value="testing"/>
         <env name="ZAPSIGN_API_KEY" value=""/>
     </php>
 </phpunit>

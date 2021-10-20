@@ -60,6 +60,7 @@ abstract class DocumentAttributes extends BaseDocument
         return (new static())
             ->setName($name)
             ->setUrlPdf($urlPdf)
+            ->setSandbox(config('zapsign.sandbox'))
             ->setSigners($signers);
     }
 }

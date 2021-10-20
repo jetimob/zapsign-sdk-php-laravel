@@ -2,6 +2,7 @@
 
 namespace Jetimob\ZapSign\Tests\Feature;
 
+use Illuminate\Support\Facades\Config;
 use Jetimob\ZapSign\Api\Document\AttachmentDTO;
 use Jetimob\ZapSign\Api\Document\DocumentApi;
 use Jetimob\ZapSign\Api\Document\DocumentDTO;
@@ -28,6 +29,7 @@ class DocumentApiTest extends AbstractTestCase
     protected function setUp(): void
     {
         parent::setUp();
+        Config::set('zapsign.sandbox', true);
         $this->documentApi = ZapSign::document();
         $this->signerApi = ZapSign::signer();
     }
@@ -60,7 +62,6 @@ class DocumentApiTest extends AbstractTestCase
             $signers
         );
 
-        $document->setSandbox(true);
         $response = $this->documentApi->create($document);
 
         $this->assertSame(200, $response->getStatusCode());
