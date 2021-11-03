@@ -25,6 +25,7 @@ class DocumentApiTest extends AbstractTestCase
     protected static ?string $signerToken = null;
     protected static string $signerName = 'Teste Jetimob';
     protected static string $signerEmail = 'teste@jetimob.com';
+    protected static int $itemsPerPage = 20;
 
     protected function setUp(): void
     {
@@ -129,10 +130,26 @@ class DocumentApiTest extends AbstractTestCase
     {
         $response = $this->documentApi->list();
 
-        $documents = $response->getDocuments();
-        if (!empty($documents)) {
-            $doc = $documents[0];
-            $this->assertInstanceOf(Document::class, $doc);
+        $total = $response->getCount();
+        $previousPage = $response->getPrev();
+        $nextPage = $response->getNext();
+        $lastPage = ceil($total / self::$itemsPerPage);
+
+        $this->assertIsInt($total);
+        $this->assertNull($previousPage);
+
+        if ($total <= self::$itemsPerPage) {
+            $this->assertNull($nextPage);
+        } else {
+            $this->assertIsString($nextPage);
+        }
+
+        foreach ($response->getDocuments() as $document) {
+            $this->assertInstanceOf(Document::class, $document);
+        }
+
+        if ($lastPage > 1) {
+            $this->verifyLastPage($lastPage);
         }
     }
 
@@ -148,5 +165,18 @@ class DocumentApiTest extends AbstractTestCase
         $response = $this->documentApi->delete(self::$documentToken);
         $this->assertSame(200, $response->getStatusCode());
         self::$documentToken = null;
+    }
+
+    protected function verifyLastPage(int $page): void
+    {
+        $response = $this->documentApi->list($page);
+        $total = $response->getCount();
+        $this->assertTrue($total > ($page - 1) * self::$itemsPerPage && $total <= $page * self::$itemsPerPage);
+        $this->assertNull($response->getNext());
+        $this->assertNotEmpty($response->getDocuments());
+
+        foreach ($response->getDocuments() as $document) {
+            $this->assertInstanceOf(Document::class, $document);
+        }
     }
 }

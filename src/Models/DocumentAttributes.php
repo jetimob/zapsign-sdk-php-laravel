@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\ZapSign\Models;
 
 use Jetimob\ZapSign\Entity\BaseDocument;

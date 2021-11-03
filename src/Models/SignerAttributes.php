@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\ZapSign\Models;
 
 use Jetimob\Http\Traits\Serializable;
@@ -48,9 +50,11 @@ abstract class SignerAttributes
     protected ?int $times_viewed;
     protected ?string $last_view_at;
     protected ?string $signed_at;
-    protected ?string $get_latitude;
+    protected ?string $geo_latitude;
     protected ?string $geo_longitude;
     protected ?string $token;
+    protected ?bool $send_automatic_email;
+    protected ?string $custom_message;
 
     /**
      * @return string|null
@@ -286,9 +290,9 @@ abstract class SignerAttributes
     /**
      * @return string|null
      */
-    public function getGetLatitude(): ?string
+    public function getGeoLatitude(): ?string
     {
-        return $this->get_latitude;
+        return $this->geo_latitude;
     }
 
     /**
@@ -305,6 +309,26 @@ abstract class SignerAttributes
     public function getToken(): ?string
     {
         return $this->token;
+    }
+
+    public function setSendAutomaticEmail(bool $send): void
+    {
+        $this->send_automatic_email = $send;
+    }
+
+    public function getSendAutomaticEmail(): ?bool
+    {
+        return $this->send_automatic_email;
+    }
+
+    public function setCustomMessage(string $custom_message): void
+    {
+        $this->custom_message = $custom_message;
+    }
+
+    public function getCustomMessage(): ?string
+    {
+        return $this->custom_message;
     }
 
     public static function new(string $name, string $email): self

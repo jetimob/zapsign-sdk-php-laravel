@@ -1,9 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\ZapSign\Api\Signer;
 
 use Jetimob\ZapSign\Api\ZapSignResponse;
-use Jetimob\ZapSign\Entity\Signer;
 
 class SignerResponse extends ZapSignResponse
 {
@@ -47,9 +48,11 @@ class SignerResponse extends ZapSignResponse
     protected ?int $times_viewed;
     protected ?string $last_view_at;
     protected ?string $signed_at;
-    protected ?string $get_latitude;
+    protected ?string $geo_latitude;
     protected ?string $geo_longitude;
     protected ?string $token;
+    protected ?bool $send_automatic_email;
+    protected ?string $custom_message;
 
     /**
      * @return string|null
@@ -174,9 +177,9 @@ class SignerResponse extends ZapSignResponse
     /**
      * @return string|null
      */
-    public function getGetLatitude(): ?string
+    public function getGeoLatitude(): ?string
     {
-        return $this->get_latitude;
+        return $this->geo_latitude;
     }
 
     /**
@@ -193,5 +196,19 @@ class SignerResponse extends ZapSignResponse
     public function getToken(): ?string
     {
         return $this->token;
+    }
+
+    public function getSignerUrl(): ?string
+    {
+        return "https://app.zapsign.com.br/verificar/{$this->getToken()}";
+    }
+
+    public function getSendAutomaticEmail(): ?bool
+    {
+        return $this->send_automatic_email;
+    }
+    public function getCustomMessage(): ?string
+    {
+        return $this->custom_message;
     }
 }

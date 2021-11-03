@@ -15,9 +15,18 @@ class DocumentApi extends AbstractApi
      * @return DocumentListResponse
      * @link https://docs.zapsign.com.br/documentos/listar-documentos
      */
-    public function list(): DocumentListResponse
+    public function list(int $page = 1): DocumentListResponse
     {
-        return $this->mappedGet('docs/', DocumentListResponse::class);
+        return $this->mappedGet(
+            'docs/',
+            DocumentListResponse::class,
+            [
+                RequestOptions::QUERY => [
+                    'page' => $page,
+                ]
+            ]
+        );
+
     }
 
     /**
@@ -50,7 +59,7 @@ class DocumentApi extends AbstractApi
      */
     public function attach(AttachmentDTO $attachment, string $documentToken): DocumentResponse
     {
-        return $this->mappedPost("docs/{$documentToken}/upload-extra-doc/", DocumentResponse::class, [
+        return $this->mappedPost("docs/{$documentToken}/upload-extra-doc/", AttachmentResponse::class, [
             RequestOptions::JSON => $attachment,
         ]);
     }

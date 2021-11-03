@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\ZapSign\Api\Signer;
 
 use GuzzleHttp\Psr7\Response;

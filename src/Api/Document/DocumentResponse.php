@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jetimob\ZapSign\Api\Document;
 
 use Jetimob\ZapSign\Api\ZapSignResponse;
@@ -45,6 +47,7 @@ class DocumentResponse extends ZapSignResponse
     protected ?array $extra_docs;
     protected ?string $created_through;
     protected ?bool $deleted;
+    protected ?string $deleted_at;
     protected ?string $created_at;
     protected ?string $last_update_at;
     protected ?string $token;
@@ -237,5 +240,10 @@ class DocumentResponse extends ZapSignResponse
     public function getSigners(): ?array
     {
         return $this->signers;
+    }
+
+    public function getDeletedAt(): ?string
+    {
+        return $this->deleted_at;
     }
 }
