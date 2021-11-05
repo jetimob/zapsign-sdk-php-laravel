@@ -18,7 +18,7 @@ também desenvolvido dentro da Jetimob.
 Utilizando o composer:
 
 ```shell
-composer require jetimob/zapsign-sdk-php-laravel@v2
+composer require jetimob/zapsign-sdk-php-laravel
 ```
 
 ## Configuração
@@ -34,15 +34,8 @@ do seu projeto.
 
 Algumas configurações são obrigatórias e únicas:
 
-- resource_token
-- oauth_client_id
-- oauth_client_secret
-
-## Uso
-
-```php
-
-```
+- api_key : representa o api_token gerado dentro da plataforma da zapsign
+- sandbox : caso não seja definido, o valor default será `true`
 
 ## Licença
 
