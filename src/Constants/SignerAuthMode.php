@@ -2,7 +2,7 @@
 
 namespace Jetimob\ZapSign\Constants;
 
-final class DocumentAuthMode
+final class SignerAuthMode
 {
     public const SCREEN_SIGN = 'assinaturaTela';
     public const TOKEN_EMAIL = 'tokenEmail';
