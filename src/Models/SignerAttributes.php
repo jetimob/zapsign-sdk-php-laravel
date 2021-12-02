@@ -46,6 +46,8 @@ abstract class SignerAttributes
     /** @var string|null $external_id ID externo do signatário na sua aplicação. */
     protected ?string $external_id;
 
+    protected ?bool $require_selfie_photo;
+    protected ?bool $require_document_photo;
     protected ?string $status;
     protected ?int $times_viewed;
     protected ?string $last_view_at;
@@ -329,6 +331,26 @@ abstract class SignerAttributes
     public function getCustomMessage(): ?string
     {
         return $this->custom_message;
+    }
+
+    public function setRequireSelfiePhoto(bool $required): void
+    {
+        $this->require_selfie_photo = $required;
+    }
+
+    public function getRequireSelfiePhoto(): ?bool
+    {
+        return $this->require_selfie_photo;
+    }
+
+    public function setRequireDocumentPhoto(bool $required): void
+    {
+        $this->require_document_photo = $required;
+    }
+
+    public function getRequireDocumentPhoto(): ?bool
+    {
+        return $this->require_document_photo;
     }
 
     public static function new(string $name, string $email): self
