@@ -16,8 +16,8 @@ abstract class BaseDocument
     /** @var string $url_pdf URL pública do PDF. Máximo 10Mb */
     protected string $url_pdf;
 
-    /** @var string|null $base_64 Alternativa ao $url_pdf */
-    protected ?string $base_64;
+    /** @var string|null $base64_pdf Alternativa ao $url_pdf */
+    protected ?string $base64_pdf;
 
     /**
      * @var string|null Idioma do documento.
@@ -92,18 +92,18 @@ abstract class BaseDocument
     /**
      * @return string
      */
-    public function getBase64(): string
+    public function getBase64Pdf(): string
     {
-        return $this->base_64;
+        return $this->base64_pdf;
     }
 
     /**
-     * @param string $base_64 Alternativa ao $url_pdf
+     * @param string $base64_pdf Alternativa ao $url_pdf
      * @return BaseDocument
      */
-    public function setBase64(string $base_64): BaseDocument
+    public function setBase64Pdf(string $base64_pdf): BaseDocument
     {
-        $this->base_64 = $base_64;
+        $this->base64_pdf = $base64_pdf;
         return $this;
     }
 
