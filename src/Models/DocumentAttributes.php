@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Jetimob\ZapSign\Models;
 
+use Illuminate\Support\Facades\Config;
 use Jetimob\ZapSign\Entity\BaseDocument;
 use Jetimob\ZapSign\Entity\Signer;
 
@@ -15,22 +16,17 @@ abstract class DocumentAttributes extends BaseDocument
     /** @var Signer[]|null $signers Representa os signatários do documento */
     protected ?array $signers;
 
+    public function __construct()
+    {
+        $this->sandbox = Config::get('zapsign.sandbox');
+    }
+
     /**
      * @return bool|null
      */
     public function getSandbox(): ?bool
     {
         return $this->sandbox;
-    }
-
-    /**
-     * @param bool|null $sandbox Defina como true caso se trate de um documento de teste
-     * @return self
-     */
-    public function setSandbox(?bool $sandbox): self
-    {
-        $this->sandbox = $sandbox;
-        return $this;
     }
 
     /**
@@ -62,7 +58,6 @@ abstract class DocumentAttributes extends BaseDocument
         return (new static())
             ->setName($name)
             ->setUrlPdf($urlPdf)
-            ->setSandbox(config('zapsign.sandbox'))
             ->setSigners($signers);
     }
 }
