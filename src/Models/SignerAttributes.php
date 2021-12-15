@@ -57,6 +57,7 @@ abstract class SignerAttributes
     protected ?string $token;
     protected ?bool $send_automatic_email;
     protected ?string $custom_message;
+    protected ?string $sign_url;
 
     /**
      * @return string|null
@@ -351,6 +352,11 @@ abstract class SignerAttributes
     public function getRequireDocumentPhoto(): ?bool
     {
         return $this->require_document_photo;
+    }
+
+    public function getSignUrl(): ?string
+    {
+        return $this->sign_url;
     }
 
     public static function new(string $name, string $email): self

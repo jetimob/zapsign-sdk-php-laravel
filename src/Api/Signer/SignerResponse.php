@@ -53,6 +53,7 @@ class SignerResponse extends ZapSignResponse
     protected ?string $token;
     protected ?bool $send_automatic_email;
     protected ?string $custom_message;
+    protected ?string $sign_url;
 
     /**
      * @return string|null
@@ -198,15 +199,16 @@ class SignerResponse extends ZapSignResponse
         return $this->token;
     }
 
-    public function getSignerUrl(): ?string
+    public function getSignUrl(): ?string
     {
-        return "https://app.zapsign.com.br/verificar/{$this->getToken()}";
+        return $this->sign_url;
     }
 
     public function getSendAutomaticEmail(): ?bool
     {
         return $this->send_automatic_email;
     }
+
     public function getCustomMessage(): ?string
     {
         return $this->custom_message;

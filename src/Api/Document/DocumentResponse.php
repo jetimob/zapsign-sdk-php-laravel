@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Jetimob\ZapSign\Api\Document;
 
 use Jetimob\ZapSign\Api\ZapSignResponse;
+use Jetimob\ZapSign\Entity\Document;
 use Jetimob\ZapSign\Entity\Signer;
 
 class DocumentResponse extends ZapSignResponse
@@ -57,6 +58,12 @@ class DocumentResponse extends ZapSignResponse
 
     /** @var Signer[]|null $signers Representa os signatários do documento */
     protected ?array $signers;
+
+
+    public function signersItemType(): string
+    {
+        return Signer::class;
+    }
 
     /**
      * @return string
