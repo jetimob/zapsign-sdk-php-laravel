@@ -37,6 +37,4 @@ class DocumentSigned extends Document
         $this->signers_who_signed = $signers_who_signed;
         return $this;
     }
-
-
 }
