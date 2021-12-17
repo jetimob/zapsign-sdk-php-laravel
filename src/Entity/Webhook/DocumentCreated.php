@@ -9,8 +9,6 @@ use Jetimob\ZapSign\Entity\Document;
 
 class DocumentCreated extends Document
 {
-    use Serializable;
-
     protected string $event_type = 'doc_created';
 
     /**

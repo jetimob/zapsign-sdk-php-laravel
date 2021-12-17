@@ -10,8 +10,6 @@ use Jetimob\ZapSign\Entity\Signer;
 
 class DocumentSigned extends Document
 {
-    use Serializable;
-
     protected string $event_type = 'doc_signed';
 
     protected Signer $signer_who_signed;
