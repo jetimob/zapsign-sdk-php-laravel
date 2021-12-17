@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace Jetimob\ZapSign\Entity\Webhook;
 
+use Jetimob\Http\Traits\Serializable;
 use Jetimob\ZapSign\Entity\Document;
+use Jetimob\ZapSign\Entity\Signer;
 
 class DocumentSigned extends Document
 {
+    use Serializable;
+
     protected string $event_type = 'doc_signed';
 
-    protected array $signers_who_signed;
+    protected Signer $signer_who_signed;
 
     /**
      * @return string
@@ -21,20 +25,10 @@ class DocumentSigned extends Document
     }
 
     /**
-     * @return array
+     * @return Signer
      */
-    public function getSignersWhoSigned(): array
+    public function getSignerWhoSigned(): Signer
     {
-        return $this->signers_who_signed;
-    }
-
-    /**
-     * @param array $signers_who_signed
-     * @return DocumentSigned
-     */
-    public function setSignersWhoSigned(array $signers_who_signed): DocumentSigned
-    {
-        $this->signers_who_signed = $signers_who_signed;
-        return $this;
+        return $this->signer_who_signed;
     }
 }
