@@ -55,6 +55,14 @@ abstract class BaseDocument
     /**
      * @return string
      */
+    public function extra_docsItemType(): string
+    {
+        return self::class;
+    }
+
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return $this->name;
