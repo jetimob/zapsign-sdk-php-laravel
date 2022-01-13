@@ -59,6 +59,13 @@ class DocumentResponse extends ZapSignResponse
     /** @var Signer[]|null $signers Representa os signatários do documento */
     protected ?array $signers;
 
+    /**
+     * @return string
+     */
+    public function extra_docsItemType(): string
+    {
+        return self::class;
+    }
 
     public function signersItemType(): string
     {

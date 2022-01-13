@@ -16,6 +16,6 @@
         </testsuite>
     </testsuites>
     <php>
-        <env name="ZAPSIGN_API_KEY" value=""/>
+        <env name="ZAPSIGN_API_KEY" value="5b06900f-1b15-49dd-a4f4-abbf6b5fb4a3cd0915d4-2651-4e81-9371-e71d1481eba2"/>
     </php>
 </phpunit>

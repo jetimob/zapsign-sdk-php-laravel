@@ -52,7 +52,6 @@ abstract class BaseDocument
     protected ?string $last_update_at;
     protected ?string $token;
 
-
     /**
      * @return string
      */
