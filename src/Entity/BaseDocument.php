@@ -57,7 +57,7 @@ abstract class BaseDocument
      */
     public function extra_docsItemType(): string
     {
-        return self::class;
+        return Attachment::class;
     }
 
     /**

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Jetimob\ZapSign\Api\Document;
 
 use Jetimob\ZapSign\Api\ZapSignResponse;
-use Jetimob\ZapSign\Entity\Document;
+use Jetimob\ZapSign\Entity\Attachment;
 use Jetimob\ZapSign\Entity\Signer;
 
 class DocumentResponse extends ZapSignResponse
@@ -64,7 +64,7 @@ class DocumentResponse extends ZapSignResponse
      */
     public function extra_docsItemType(): string
     {
-        return self::class;
+        return Attachment::class;
     }
 
     public function signersItemType(): string
