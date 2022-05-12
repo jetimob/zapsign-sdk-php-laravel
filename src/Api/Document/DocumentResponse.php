@@ -62,7 +62,7 @@ class DocumentResponse extends ZapSignResponse
     /**
      * @return string
      */
-    public function extra_docsItemType(): string
+    public function extraDocsItemType(): string
     {
         return Attachment::class;
     }
