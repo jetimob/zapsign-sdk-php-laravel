@@ -4,12 +4,12 @@
     "description": "SDK de integração com a ZapSign",
     "type": "library",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "ext-json": "*",
-        "jetimob/http-php-laravel": "^1.4.0"
+        "jetimob/http-php-laravel": "^2"
     },
     "require-dev": {
-        "orchestra/testbench": "^v6.18.0",
+        "orchestra/testbench": "^7.6.1",
         "phpunit/phpunit": "^v9.5.5"
     },
     "license": "MIT",
