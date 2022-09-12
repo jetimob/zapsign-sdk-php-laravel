@@ -4,6 +4,7 @@ namespace Jetimob\ZapSign\Tests\Unit;
 
 use Jetimob\ZapSign\Exception\RuntimeException;
 use Jetimob\ZapSign\Tests\AbstractTestCase;
+use Jetimob\ZapSign\Facades\ZapSign;
 
 class ApiImplTest extends AbstractTestCase
 {
@@ -11,5 +12,7 @@ class ApiImplTest extends AbstractTestCase
     public function unknownApiCallShouldThrowException(): void
     {
         $this->expectException(RuntimeException::class);
+
+        ZapSign::undefinedApi();
     }
 }
