@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/jetimob/zapsign-sdk-php-laravel/compare/v1.1.0...v2.0.0) (2022-09-21)
+
+
+### Bug Fixes
+
+* altera métodos de extra_docsItemType para sua versão extraDocsItemType ([06b4842](https://github.com/jetimob/zapsign-sdk-php-laravel/commit/06b48429ce0ef1faeeb27adb63eb1d58d104a5b2))
+* gerando a exceção que era esperada no teste ([90c23fb](https://github.com/jetimob/zapsign-sdk-php-laravel/commit/90c23fb47726fd32b25fd3ed36825f5f1f68ba70))
+
 ## 1.1.0 (2022-04-14)
 
 
